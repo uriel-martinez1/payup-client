@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
@@ -9,19 +9,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>PayUp App</h1>
-        <Switch>
+        <Router>
+          <Routes>
           <Route exact path="/login" Component={LoginPage} />
           <Route path="/register" Component={RegisterPage} />
-        </Switch>
+          </Routes>
+        </Router>
       </header>
 
       <body className="App-body">
         <div>
           <h2>Welcome!</h2>
-          <p>
-            <Link to="/login">Login</Link>
-          </p>
-          
         </div>
       </body>
     </div>
