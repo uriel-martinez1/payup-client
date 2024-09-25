@@ -37,6 +37,7 @@ const LoginForm = () => {
                 <label>Password</label>
                 <input type="text" name="password" value={formData.password} onChange={handleChange} />
             </div>
+            <button type="submit">Login</button>
         </form>
     );
 };
