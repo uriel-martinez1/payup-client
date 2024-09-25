@@ -13,13 +13,13 @@ const LoginForm = () => {
     });
     
     // for the returnUser information we receive upon successful authentication -- response data
-    const [userData, setUserData] = useState({
-        userId: null,
-        username: '',
-        token: ''
-    });
+    // const [userData, setUserData] = useState({
+    //     userId: null,
+    //     username: '',
+    //     token: ''
+    // });
 
-    const {login} = useContext(AuthContext); // Access the login function from AuthContext
+    const {login} = useContext(AuthContext); // Access the login function from AuthContext -- useContext is a hook that allows us to gain access to the login function inside the AuthContext.js
 
     const navigate = useNavigate(); // useNavigate hook for navigation
 
@@ -40,11 +40,11 @@ const LoginForm = () => {
             //update the global auth state inside the store
             login(token, user);
 
-            setUserData({
-                userId: user.userId,
-                username: user.username,
-                token: token
-            });
+            // setUserData({
+            //     userId: user.userId,
+            //     username: user.username,
+            //     token: token
+            // });
 
             //once we are logged in we need to redirect to home page
             navigate(`/home/${user.userId}`);
