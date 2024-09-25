@@ -1,10 +1,13 @@
 import React from "react";
+import LoginForm from '../components/LoginForm';
 
-export default function LoginPage() {
+const LoginPage = () => {
     return (
-        <>
-            <h1>Welcome back!</h1>
-            <p>This is the login view</p>
-        </>
+        <div>
+            <h1>Login</h1>
+            <LoginForm />
+        </div>
     );
-}
+};
+
+export default LoginPage;

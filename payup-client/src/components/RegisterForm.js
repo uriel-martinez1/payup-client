@@ -11,7 +11,7 @@ const RegisterForm = () => {
         lastName: ''
     });
 
-    // one way data binding in vue?
+    // these are methods 
     const handleChange = (e) => {
         setFormData({
             ...formData,
