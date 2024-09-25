@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from '../store/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -10,13 +11,15 @@ const LoginForm = () => {
         username: '', 
         password: ''
     });
-
+    
     // for the returnUser information we receive upon successful authentication -- response data
     const [userData, setUserData] = useState({
         userId: null,
         username: '',
         token: ''
     });
+
+    const {login} = useContext(AuthContext); // Access the login function from AuthContext
 
     const navigate = useNavigate(); // useNavigate hook for navigation
 
@@ -33,6 +36,9 @@ const LoginForm = () => {
             const response = await axios.post(baseUrl, formData)
             
             const { user, token } = response.data;
+
+            //update the global auth state inside the store
+            login(token, user);
 
             setUserData({
                 userId: user.userId,
@@ -56,7 +62,7 @@ const LoginForm = () => {
 
             <div>
                 <label>Password </label>
-                <input type="text" name="password" value={formData.password} onChange={handleChange} />
+                <input type="password" name="password" value={formData.password} onChange={handleChange} />
             </div>
             <button type="submit">Login</button>
         </form>
