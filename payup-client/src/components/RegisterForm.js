@@ -32,27 +32,27 @@ const RegisterForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Username</label>
+                <label>Username </label>
                 <input type="text" name="username" value={formData.username} onChange={handleChange} />
             </div>
 
             <div>
-                <label>Password</label>
+                <label>Password </label>
                 <input type="text" name="password" value={formData.password} onChange={handleChange} />
             </div>
 
             <div>
-                <label>Email</label>
+                <label>Email </label>
                 <input type="email" name="username" value={formData.username} onChange={handleChange} />
             </div>
 
             <div>
-                <label>First name:</label>
+                <label>First name </label>
                 <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
             </div>
 
             <div>
-                <label>Last name:</label>
+                <label>Last name </label>
                 <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
             </div>
 

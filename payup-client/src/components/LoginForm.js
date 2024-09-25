@@ -29,12 +29,12 @@ const LoginForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Username</label>
+                <label>Username </label>
                 <input type="text" name="username" value={formData.username} onChange={handleChange} />
             </div>
 
             <div>
-                <label>Password</label>
+                <label>Password </label>
                 <input type="text" name="password" value={formData.password} onChange={handleChange} />
             </div>
             <button type="submit">Login</button>
