@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Route, Routes, Link, useNa, useNavigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
@@ -11,29 +11,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
-          <div className="nav">
-            <h1>PayUp App</h1>
-            <Link to='/'>Home</Link>
-            <span>&nbsp;|&nbsp;</span>
-            <AuthContext.Consumer>
-              {({authState, logout}) => {
-                authState.token ? (
-                  <>
-                    <Link to='/home'>Home</Link>
-                    &nbsp;|&nbsp;
-                    <button onClick={logout}>Logout</button>
-                  </>
-                ) : (
-                  <>
-                    <Link to='/register'>Register</Link>
-                    &nbsp;|&nbsp;
-                    <button onClick={logout}>Login</button>
-                  </>
-                )
-              }}    
-            </AuthContext.Consumer>
-          </div>
-
+          <Navigation /> {/* Move the navigation logic into a separate component */}
           <Routes>
             <Route path='/' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
@@ -42,6 +20,36 @@ function App() {
         </div>
       </Router>
     </AuthProvider>
+  );
+}
+
+function Navigation() {
+  const { authState, logout } = useContext(AuthContext); // Now useContext works here
+  const navigate = useNavigate(); // useNavigate works correctly here
+
+  return (
+    <div className="nav">
+
+      {authState.token ? (
+        <>
+          <Link
+            to='#'
+            onClick={(e) => {
+              e.preventDefault();
+              logout(navigate);
+            }}
+          >
+            Logout
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link to='/register'>Register</Link>
+          &nbsp;|&nbsp;
+          <Link to='/'>Login</Link>
+        </>
+      )}
+    </div>
   );
 }
 
