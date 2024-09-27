@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserBalance from "../components/UserBalance";
 import AuthContext from "../store/AuthContext";
-import TransferCard from "../components/TransferCard";
+import TransferCards from "../components/TransferCards";
 import axios from "axios";
 
 const transfersApiEndpoint = process.env.REACT_APP_PAYUP_SERVER_BASEURL + '/api/account/transfers';
 
 const HomePage = () => {
     const { authState } = useContext(AuthContext);
-    const [transfer, setTransfers] = useState([]); // what to create an array that will holds of the transfer objects from the response
+    const [transfers, setTransfers] = useState([]); // what to create an array that will holds of the transfer objects from the response
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -34,16 +34,13 @@ const HomePage = () => {
             <h1>Welcome to the main page, {authState.user.username}!</h1> {/** Eventually we will need to adjust the return object to include user info like first, last name*/}
             <UserBalance />
 
-            <div>
-                {/**This is print error on screen */}
-                {error && <p>{error}</p>} 
-
-                {transfer !== null ? (
-                    <TransferCard transfer={{transfer}} />
-                ) : (
-                    <p>Loading transfers ...</p>
-                )}
-            </div>
+            {/**This is print error on screen */}
+            {error && <p>{error}</p>}
+            {transfers.length > 0 ? (
+                <TransferCards transfers={{ transfers }} />
+            ) : (
+                <p>Loading transfers ...</p>
+            )}
         </div>
     );
 };
