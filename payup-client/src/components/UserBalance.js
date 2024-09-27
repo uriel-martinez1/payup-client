@@ -16,7 +16,7 @@ const UserBalance = () => {
                 const response = await axios.get(apiURL);
                 setBalance(response.data.balance);
             } catch (err) {
-                setError('Error fetching balance');
+                setError('Error fetching balance.');
             }
         };
 
