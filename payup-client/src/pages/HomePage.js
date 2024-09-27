@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UserBalance from "../components/UserBalance";
 import AuthContext from "../store/AuthContext";
 import TransferCards from "../components/TransferCards";
+import SubmitButton from "../components/SubmitButton";
 import axios from "axios";
 
 const transfersApiEndpoint = process.env.REACT_APP_PAYUP_SERVER_BASEURL + '/api/account/transfers';
@@ -15,7 +16,7 @@ const HomePage = () => {
     const headerStyle = {
         textAlign: 'center',
         marginTop: '2rem',
-        color: '#F43596'
+        color: 'green'
     };
 
     useEffect(() => {
@@ -49,7 +50,7 @@ const HomePage = () => {
             ) : (
                 <p>Loading transfers ...</p>
             )}
-            <button>Pay or Request</button>
+            <SubmitButton />
         </div>
     );
 };
