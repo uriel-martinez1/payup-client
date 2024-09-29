@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
+import CreateTransferPage from "./pages/CreateTransferPage";
 import AuthContext, { AuthProvider } from './store/AuthContext';
 
 
@@ -16,6 +17,7 @@ function App() {
             <Route path='/' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/home/:userId' element={<HomePage />} />
+            <Route path='/home/:userId/transfer' element={<CreateTransferPage />} />
           </Routes>
         </div>
       </Router>

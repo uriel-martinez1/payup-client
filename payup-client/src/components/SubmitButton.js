@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SubmitButton = () => {
+const SubmitButton = ({onClick}) => {
     const [isActive, setIsActive] = useState(false);
 
     // style for button
@@ -23,7 +23,8 @@ const SubmitButton = () => {
             <button 
                 style={buttonStyle}
                 onMouseEnter={() => setIsActive(true)} // when hovers over button -- turn green
-                onMouseLeave={() => setIsActive(false)} // set back to gray 
+                onMouseLeave={() => setIsActive(false)} // set back to gray
+                onClick={onClick}
             >
                 {isActive} Pay or Request
             </button>
