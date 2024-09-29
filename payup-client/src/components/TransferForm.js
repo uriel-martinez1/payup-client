@@ -66,6 +66,10 @@ const TransferForm = () => {
         }
     };
 
+    const handleCancel = () => {
+        navigate(`/home/${authState.user.userId}`);
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -103,6 +107,7 @@ const TransferForm = () => {
             
             {/**For now just pay button */}
             <button type="submit">Pay</button>
+            <button type="submit" onClick={handleCancel}>Cancel</button>
         </form>
     )
 }
