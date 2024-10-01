@@ -6,16 +6,16 @@ const SubmitButton = ({onClick}) => {
     // style for button
     const buttonStyle = {
         margin: '0 auto',
-        backgroundColor: isActive ? 'green' : 'gray',
+        backgroundColor: isActive ? 'darkgreen' : 'green',
         cursor: isActive ? 'pointer' : 'not-allowed',
         color: 'white',
-        padding: '0.6rem 1.2rem',
+        padding: '0.8rem 3.6rem',
         border: 'none'
     };
 
     const placementStyle = {
         textAlign: 'center',
-        marginTop: '2rem'
+        margin: '2rem 2rem 3rem'
     };
 
     return (
