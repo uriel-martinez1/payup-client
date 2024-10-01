@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import CreateTransferPage from "./pages/CreateTransferPage";
+import TransferDetaiPage from "./pages/TransferDetailsPage";
 import AuthContext, { AuthProvider } from './store/AuthContext';
 
 
@@ -18,6 +19,7 @@ function App() {
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/home/:userId' element={<HomePage />} />
             <Route path='/home/:userId/transfer' element={<CreateTransferPage />} />
+            <Route path='/home/:userId/transfer/:transferId' element={<TransferDetaiPage />} />
           </Routes>
         </div>
       </Router>

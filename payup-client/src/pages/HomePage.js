@@ -4,6 +4,7 @@ import AuthContext from "../store/AuthContext";
 import TransferCards from "../components/TransferCards";
 import SubmitButton from "../components/SubmitButton";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const transfersApiEndpoint = process.env.REACT_APP_PAYUP_SERVER_BASEURL + '/api/account/transfers';
@@ -40,20 +41,29 @@ const HomePage = () => {
         color: 'green'
     };
 
+    const subHeaderStyle = {
+        textAlign: 'center',
+        marginTop: '2rem'
+    };
+
     return (
         <div>
             <h1 style={headerStyle}>Welcome, {authState.user.username}!</h1> {/** Eventually we will need to adjust the return object to include user info like first, last name*/}
             <UserBalance />
 
-            <h2>Transfers:</h2>
+            <h2 style={subHeaderStyle}>Transfers:</h2>
             {/**This is print error on screen */}
             {error && <p>{error}</p>}
             {transfers.length > 0 ? (
-                <TransferCards transfers={transfers} />
+                <div>
+
+                    <TransferCards transfers={transfers} />
+
+                </div>
             ) : (
                 <p>Loading transfers ...</p>
             )}
-            <SubmitButton onClick={() => navigate(`/home/${authState.user.userId}/transfer`)}/>
+            <SubmitButton onClick={() => navigate(`/home/${authState.user.userId}/transfer`)} />
         </div>
     );
 };
