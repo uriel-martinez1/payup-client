@@ -18,8 +18,8 @@ const TransferCards = ({ transfers }) => {
                 <Link
                     key={transfer.transferId}
                     to={`/home/${authState.user.userId}/transfer/${transfer.transferId}`}
+                    state={{transfer}} // we pass the entire transfer object in the state
                     style={{ textDecoration: 'none' }}
-                    transfer={transfer}
                 >
                     <TransferCard transfer={transfer} />
                 </Link>
