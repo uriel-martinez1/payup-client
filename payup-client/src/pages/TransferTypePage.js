@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../store/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const CreateTransferPage = ({ onClick }) => {
     const [isActive, setIsActive] = useState(false);
+    const { authState } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const buttonStyle = {
         margin: '0 auto',
@@ -25,7 +29,7 @@ const CreateTransferPage = ({ onClick }) => {
                     style={buttonStyle}
                     onMouseEnter={() => setIsActive(true)}
                     onMouseLeave={() => setIsActive(false)}
-                    onClick={onClick}
+                    onClick={() => navigate(`/home/${authState.user.userId}/transfer/pay`)}
                 >
                     Pay</button>
             </div>
