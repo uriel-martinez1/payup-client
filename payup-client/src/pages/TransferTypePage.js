@@ -38,7 +38,7 @@ const CreateTransferPage = ({ onClick }) => {
                     style={buttonStyle}
                     onMouseEnter={() => setIsActive(true)}
                     onMouseLeave={() => setIsActive(false)}
-                    onClick={onClick}
+                    onClick={() => navigate(`/home/${authState.user.userId}/transfer/request`)}
                 >
                     Requests</button>
             </div>

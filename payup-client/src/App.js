@@ -5,6 +5,7 @@ import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import TransferTypePage from "./pages/TransferTypePage";
 import CreateTransferPage from "./pages/CreateTransferPage";
+import CreateRequestPage from "./pages/CreateRequestPage";
 import TransferDetaiPage from "./pages/TransferDetailsPage";
 import AuthContext, { AuthProvider } from './store/AuthContext';
 
@@ -21,6 +22,7 @@ function App() {
             <Route path='/home/:userId' element={<HomePage />} />
             <Route path='/home/:userId/transfer' element={<TransferTypePage />} />
             <Route path='/home/:userId/transfer/pay' element={<CreateTransferPage />} />
+            <Route path='/home/:userId/transfer/request' element={<CreateRequestPage />} />
             <Route path='/home/:userId/transfer/:transferId' element={<TransferDetaiPage />} />
           </Routes>
         </div>
