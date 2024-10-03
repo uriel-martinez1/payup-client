@@ -21,10 +21,22 @@ const CreateTransferPage = ({ onClick }) => {
         <div>
             <h2>Pay or Request?</h2>
             <div style={placementStyle}>
-                <button style={buttonStyle}>Pay</button>
+                <button
+                    style={buttonStyle}
+                    onMouseEnter={() => setIsActive(true)}
+                    onMouseLeave={() => setIsActive(false)}
+                    onClick={onClick}
+                >
+                    Pay</button>
             </div>
             <div style={placementStyle}>
-                <button style={buttonStyle}>Requests</button>
+                <button
+                    style={buttonStyle}
+                    onMouseEnter={() => setIsActive(true)}
+                    onMouseLeave={() => setIsActive(false)}
+                    onClick={onClick}
+                >
+                    Requests</button>
             </div>
         </div>
     );
