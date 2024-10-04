@@ -112,7 +112,7 @@ const RequestForm = () => {
                     value={requestData.userFrom}
                     onChange={handleChange}
                 >
-                    <option value="">Select a requestee: </option>
+                    <option value="">Select a user: </option>
                     {Array.isArray(userData) && userData.length > 0 ? (
                         userData.map((user) => (
                             <option key={user.id} value={user.id}>

@@ -104,7 +104,7 @@ const TransferForm = () => {
                     value={transferData.userTo}
                     onChange={handleChange}
                 >
-                    <option value="">Select a recipient: </option>
+                    <option value="">Select a user: </option>
                     {Array.isArray(userData) && userData.length > 0 ? (
                         userData.map((user) => (
                             <option key={user.id} value={user.id}>
@@ -117,19 +117,6 @@ const TransferForm = () => {
                 </select>
             </div>
 
-            <div>
-                <label>Transfer Type: </label>
-                <select
-                    name="transferType"
-                    value={transferData.transferType}
-                    onChange={handleChange}
-                >
-                    <option value="Send">Send</option>
-                    <option value="Request">Request</option>
-                </select>
-            </div>
-
-            {/**For now just pay button */}
             <button type="submit">Pay</button>
             <button type="button" onClick={handleCancel}>Cancel</button>
             {error && <p style={{ color: "red" }}>{error}</p>}
