@@ -95,8 +95,6 @@ const TransferForm = () => {
                     onChange={handleChange}
                 />
             </div>
-
-            {/**For now, lets create pay */}
             <div>
                 <label>Recipient: </label>
                 <select
@@ -132,7 +130,7 @@ const TransferForm = () => {
             </div>
 
             {/**For now just pay button */}
-            <button type="submit">Submit Transfer</button>
+            <button type="submit">Pay</button>
             <button type="button" onClick={handleCancel}>Cancel</button>
             {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
