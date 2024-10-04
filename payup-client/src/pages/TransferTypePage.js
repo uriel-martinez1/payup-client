@@ -40,7 +40,7 @@ const CreateTransferPage = ({ onClick }) => {
                     onMouseLeave={() => setIsActive(false)}
                     onClick={() => navigate(`/home/${authState.user.userId}/transfer/request`)}
                 >
-                    Requests</button>
+                    Request</button>
             </div>
         </div>
     );
