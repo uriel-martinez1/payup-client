@@ -1,10 +1,12 @@
 import React from "react";
+import RequestForm from "../components/RequestForm";
 
 const CreateRequestPage = () => {
     return (
-        <div>
-            This is the create request page.
-        </div>
+        <>
+            <h2>Who needs to Payup!</h2>
+            <RequestForm />
+        </>
     )
 };
 
