@@ -86,9 +86,10 @@ const HomePage = () => {
     const buttonLinkStyle = {
         background: 'none',
         border: 'none',
-        color: 'green',
-        textDecoration: 'underline',
+        color: activeTab ? 'green': 'black',
+        textDecoration: activeTab ? 'underline': 'none',
         cursor: 'pointer',
+        fontSize: '26px',
     };
 
     return (
@@ -102,7 +103,10 @@ const HomePage = () => {
                     <ul style={navListStyle}>
                         <li style={navItemStyle}>
                             <button
-                                style={buttonLinkStyle}
+                                style={{...buttonLinkStyle,
+                                    color: activeTab === 'all' ? 'green' : 'black',
+                                    textDecoration: activeTab === 'all' ? 'underline' : 'none',
+                                }}
                                 onClick={() => handleTabChange('all')}
                             >
                                 Transactions
@@ -110,7 +114,10 @@ const HomePage = () => {
                         </li>
                         <li style={navItemStyle}>
                             <button
-                                style={buttonLinkStyle}
+                                style={{...buttonLinkStyle,
+                                    color: activeTab === 'requests' ? 'green' : 'black',
+                                    textDecoration: activeTab === 'requests' ? 'underline' : 'none',
+                                }}
                                 onClick={() => handleTabChange('requests')}
                             >
                                 Requests
@@ -125,7 +132,7 @@ const HomePage = () => {
             {
                 activeTab === 'all' && (
                     <div>
-                        <h2 style={subHeaderStyle}>Transactions</h2>
+                        {/* <h2 style={subHeaderStyle}>Transactions</h2> */}
                         {/**This is print error on screen */}
                         {error && <p>{error}</p>}
                         {otherTransfers.length > 0 ? (
@@ -140,7 +147,7 @@ const HomePage = () => {
             {
                 activeTab === 'requests' && (
                     <div>
-                        <h2 style={subHeaderStyle}>Requests</h2>
+                        {/* <h2 style={subHeaderStyle}>Requests</h2> */}
                         {/**This is print error on screen */}
                         {error && <p>{error}</p>}
                         {requests.length > 0 ? (
