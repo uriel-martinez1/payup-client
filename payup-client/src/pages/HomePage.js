@@ -43,7 +43,7 @@ const HomePage = () => {
 
         fetchTransfers(); // this initiates the call to get transfers
 
-    }, [authState.token]); // we need this to ensure the useEffect hook only runs if the token changes in authContext
+    }, [authState.token,authState.user.userId]); // we need this to ensure the useEffect hook only runs if the token changes in authContext
 
     // creating state for navigation tabs
     const [activeTab, setActiveTab] = useState('all');  // requests or all
@@ -64,8 +64,31 @@ const HomePage = () => {
         marginTop: '2rem'
     };
 
-    const requestsTabStyle = {
-        marginRight: '10px',
+    const containerStyle = {
+        width: '80%',
+        maxWidth: '1100px',
+        margin: '0 auto',
+        padding: '32px 0px',
+    };
+
+    const navListStyle = {
+        margin: '0',
+        padding: '0',
+        listStyle: 'none',
+        display: 'flex',
+        justifyContent: 'center',
+    };
+
+    const navItemStyle = {
+        marginRight: '1em'
+    };
+
+    const buttonLinkStyle = {
+        background: 'none',
+        border: 'none',
+        color: 'green',
+        textDecoration: 'underline',
+        cursor: 'pointer',
     };
 
     return (
@@ -74,45 +97,63 @@ const HomePage = () => {
             <UserBalance />
 
             {/**Navigation tabs*/}
-            <div className="tabs">
-                <button onClick={() => handleTabChange('all')}>
-                    Transactions
-                </button>
-                <button style={requestsTabStyle} onClick={() => handleTabChange('requests')}>
-                    Requests
-                </button>
-            </div>
+            <div style={containerStyle}>
+                <nav>
+                    <ul style={navListStyle}>
+                        <li style={navItemStyle}>
+                            <button
+                                style={buttonLinkStyle}
+                                onClick={() => handleTabChange('all')}
+                            >
+                                Transactions
+                            </button>
+                        </li>
+                        <li style={navItemStyle}>
+                            <button
+                                style={buttonLinkStyle}
+                                onClick={() => handleTabChange('requests')}
+                            >
+                                Requests
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div >
 
             {/**TransferCards will render depending on activeTab selected */}
 
-            {activeTab === 'all' && (
-                <div>
-                    <h2 style={subHeaderStyle}>Transactions</h2>
-                    {/**This is print error on screen */}
-                    {error && <p>{error}</p>}
-                    {otherTransfers.length > 0 ? (
-                        <TransferCards transfers={otherTransfers} />
-                    ) : (
-                        <p>Loading transfers ...</p>
-                    )}
-                </div>
-            )}
+            {
+                activeTab === 'all' && (
+                    <div>
+                        <h2 style={subHeaderStyle}>Transactions</h2>
+                        {/**This is print error on screen */}
+                        {error && <p>{error}</p>}
+                        {otherTransfers.length > 0 ? (
+                            <TransferCards transfers={otherTransfers} />
+                        ) : (
+                            <p>Loading transfers ...</p>
+                        )}
+                    </div>
+                )
+            }
 
-            {activeTab === 'requests' && (
-                <div>
-                    <h2 style={subHeaderStyle}>Requests</h2>
-                    {/**This is print error on screen */}
-                    {error && <p>{error}</p>}
-                    {requests.length > 0 ? (
-                        <TransferCards transfers={requests} />
-                    ) : (
-                        <p>No requests to approve or reject.</p>
-                    )}
-                </div>
-            )}
+            {
+                activeTab === 'requests' && (
+                    <div>
+                        <h2 style={subHeaderStyle}>Requests</h2>
+                        {/**This is print error on screen */}
+                        {error && <p>{error}</p>}
+                        {requests.length > 0 ? (
+                            <TransferCards transfers={requests} />
+                        ) : (
+                            <p>No requests to approve or reject.</p>
+                        )}
+                    </div>
+                )
+            }
 
             <SubmitButton onClick={() => navigate(`/home/${authState.user.userId}/transfer`)} />
-        </div>
+        </div >
     );
 };
 
