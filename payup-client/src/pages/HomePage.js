@@ -26,12 +26,15 @@ const HomePage = () => {
                     }
                 });
                 const transfersData = Array.isArray(response.data) ? response.data : []; // once we get a response, place responses in the array transfer
+                console.log(response.data);
 
                 const requestsData = transfersData.filter((transfer) => transfer.transferType === 'Request' && transfer.transferStatus === 'Pending' && transfer.userFrom.id === authState.user.userId); // filter the requests and add the request objects into a seperate array
                 setRequests(requestsData); // add the filtered array to the requests array
+                console.log(requestsData);
 
                 const otherTransferData = transfersData.filter((transfer) => !(transfer.transferType === 'Request' && transfer.transferStatus === 'Pending' && transfer.userFrom.id === authState.user.userId));
                 setOtherTransfers(otherTransferData);
+                console.log(otherTransferData);
 
             } catch (err) {
                 setError('Error fetching the transfers.');

@@ -46,6 +46,7 @@ function Navigation() {
               e.preventDefault();
               logout(navigate);
             }}
+            style={{padding: '16px 0px 0px 16px'}}
           >
             Logout
           </Link>
