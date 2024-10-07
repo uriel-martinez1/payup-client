@@ -10,8 +10,12 @@ const TransferDetaiPage = () => {
     }
     return (
         <div>
-            <h1>Transfer details</h1>
-            <p>This is the transfer detail page for transfer #{transfer.transferId}</p>
+            <h1>Transaction details</h1>
+            <h2>${transfer.amount}</h2>
+            <p>Transaction ID: {transfer.transferId}</p>
+            <p>Payor: {transfer.userFrom.firstName} {transfer.userFrom.lastName}</p>
+            <p>Recipient: {transfer.userTo.firstName} {transfer.userTo.lastName}</p>
+            <p>Status: {transfer.transferStatus}</p>
         </div>
     );
 };
