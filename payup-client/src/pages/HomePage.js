@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../store/AuthContext";
 import { TransferContext } from "../store/TransferContext";
 
+// css
+import '../styles/HomePage.css';
+
 //const transfersApiEndpoint = process.env.REACT_APP_PAYUP_SERVER_BASEURL + '/api/account/transfers';
 
 const HomePage = () => {
@@ -56,71 +59,64 @@ const HomePage = () => {
     };
 
     // we can also set styling as a const in our components
-    const headerStyle = {
-        textAlign: 'center',
-        marginTop: '2rem',
-        color: 'green'
-    };
+    // const headerStyle = {
+    //     textAlign: 'center',
+    //     marginTop: '2rem',
+    //     color: 'green'
+    // };
 
-    const subHeaderStyle = {
-        textAlign: 'center',
-        marginTop: '2rem'
-    };
+    // const subHeaderStyle = {
+    //     textAlign: 'center',
+    //     marginTop: '2rem'
+    // };
 
-    const containerStyle = {
-        width: '80%',
-        maxWidth: '1100px',
-        margin: '0 auto',
-        padding: '32px 0px',
-    };
+    // const containerStyle = {
+    //     width: '80%',
+    //     maxWidth: '1100px',
+    //     margin: '0 auto',
+    //     padding: '32px 0px',
+    // };
 
-    const navListStyle = {
-        margin: '0',
-        padding: '0',
-        listStyle: 'none',
-        display: 'flex',
-        justifyContent: 'center',
-    };
+    // const navListStyle = {
+    //     margin: '0',
+    //     padding: '0',
+    //     listStyle: 'none',
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    // };
 
-    const navItemStyle = {
-        marginRight: '1em'
-    };
+    // const navItemStyle = {
+    //     marginRight: '1em'
+    // };
 
-    const buttonLinkStyle = {
-        background: 'none',
-        border: 'none',
-        color: activeTab ? 'green': 'black',
-        textDecoration: activeTab ? 'underline': 'none',
-        cursor: 'pointer',
-        fontSize: '26px',
-    };
+    // const buttonLinkStyle = {
+    //     background: 'none',
+    //     border: 'none',
+    //     color: activeTab ? 'green': 'black',
+    //     textDecoration: activeTab ? 'underline': 'none',
+    //     cursor: 'pointer',
+    //     fontSize: '26px',
+    // };
 
     return (
-        <div>
-            <h1 style={headerStyle}>Welcome, {authState.user.username}!</h1> {/** Eventually we will need to adjust the return object to include user info like first, last name*/}
+        <div className="home-container">
+            <h1 className="header">Welcome, {authState.user.username}!</h1> {/** Eventually we will need to adjust the return object to include user info like first, last name*/}
             <UserBalance />
 
             {/**Navigation tabs*/}
-            <div style={containerStyle}>
                 <nav>
-                    <ul style={navListStyle}>
-                        <li style={navItemStyle}>
+                    <ul className="nav-list">
+                        <li className="nav-item">
                             <button
-                                style={{...buttonLinkStyle,
-                                    color: activeTab === 'all' ? 'green' : 'black',
-                                    textDecoration: activeTab === 'all' ? 'underline' : 'none',
-                                }}
+                                className={`nav-link ${activeTab === 'all' ? 'active': ''}`}
                                 onClick={() => handleTabChange('all')}
                             >
                                 Transactions
                             </button>
                         </li>
-                        <li style={navItemStyle}>
+                        <li className="nav-item">
                             <button
-                                style={{...buttonLinkStyle,
-                                    color: activeTab === 'requests' ? 'green' : 'black',
-                                    textDecoration: activeTab === 'requests' ? 'underline' : 'none',
-                                }}
+                                className={`nav-link ${activeTab === 'requests' ? 'active' : ''}`}
                                 onClick={() => handleTabChange('requests')}
                             >
                                 Requests
@@ -128,16 +124,14 @@ const HomePage = () => {
                         </li>
                     </ul>
                 </nav>
-            </div >
 
             {/**TransferCards will render depending on activeTab selected */}
 
             {
                 activeTab === 'all' && (
                     <div>
-                        {/* <h2 style={subHeaderStyle}>Transactions</h2> */}
                         {/**This is print error on screen */}
-                        {error && <p>{error}</p>}
+                        {error && <p className="error-message">{error}</p>}
                         {otherTransfers.length > 0 ? (
                             <TransferCards transfers={otherTransfers} />
                         ) : (
@@ -150,9 +144,8 @@ const HomePage = () => {
             {
                 activeTab === 'requests' && (
                     <div>
-                        {/* <h2 style={subHeaderStyle}>Requests</h2> */}
                         {/**This is print error on screen */}
-                        {error && <p>{error}</p>}
+                        {error && <p className="error-message">{error}</p>}
                         {requests.length > 0 ? (
                             <TransferCards transfers={requests} />
                         ) : (
