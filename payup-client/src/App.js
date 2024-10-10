@@ -8,25 +8,28 @@ import CreateTransferPage from "./pages/CreateTransferPage";
 import CreateRequestPage from "./pages/CreateRequestPage";
 import TransferDetaiPage from "./pages/TransferDetailsPage";
 import AuthContext, { AuthProvider } from './store/AuthContext';
+import { TransferProvider } from './store/TransferContext';
 
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <Navigation /> {/* Move the navigation logic into a separate component */}
-          <Routes>
-            <Route path='/' element={<LoginPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/home/:userId' element={<HomePage />} />
-            <Route path='/home/:userId/transfer' element={<TransferTypePage />} />
-            <Route path='/home/:userId/transfer/pay' element={<CreateTransferPage />} />
-            <Route path='/home/:userId/transfer/request' element={<CreateRequestPage />} />
-            <Route path='/home/:userId/transfer/:transferId' element={<TransferDetaiPage />} />
-          </Routes>
-        </div>
-      </Router>
+      <TransferProvider>
+        <Router>
+          <div className="App">
+            <Navigation /> {/* Move the navigation logic into a separate component */}
+            <Routes>
+              <Route path='/' element={<LoginPage />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/home/:userId' element={<HomePage />} />
+              <Route path='/home/:userId/transfer' element={<TransferTypePage />} />
+              <Route path='/home/:userId/transfer/pay' element={<CreateTransferPage />} />
+              <Route path='/home/:userId/transfer/request' element={<CreateRequestPage />} />
+              <Route path='/home/:userId/transfer/:transferId' element={<TransferDetaiPage />} />
+            </Routes>
+          </div>
+        </Router>
+      </TransferProvider>
     </AuthProvider>
   );
 }
@@ -46,7 +49,7 @@ function Navigation() {
               e.preventDefault();
               logout(navigate);
             }}
-            style={{padding: '16px 0px 0px 16px'}}
+            style={{ padding: '16px 0px 0px 16px' }}
           >
             Logout
           </Link>
