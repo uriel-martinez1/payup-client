@@ -1,10 +1,10 @@
-import React, { createContext, useState, useEffect, useContext, Children } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from './AuthContext';
 
 export const TransferContext = createContext();
 
-export const TransferProvider = ({ Children }) => {
+export const TransferProvider = ({ children }) => {
     const { authState } = useContext(AuthContext);
     const [transfers, setTransfers] = useState([]);
     const [error, setError] = useState(null);
@@ -29,7 +29,7 @@ export const TransferProvider = ({ Children }) => {
 
     return (
         <TransferContext.Provider value={{transfers, error}}>
-            {Children}
+            {children}
         </TransferContext.Provider>
     )
 }

@@ -22,6 +22,13 @@ const HomePage = () => {
 
     const requests = transfers.filter((transfer) => transfer.transferType === 'Request' && transfer.transferStatus === 'Pending' && transfer.userFrom.id === authState.user.userId);
     const otherTransfers = transfers.filter((transfer) => !(transfer.transferType === 'Request' && transfer.transferStatus === 'Pending' && transfer.userFrom.id === authState.user.userId));
+
+    useEffect(() => {
+        if (!authState.token) {
+            navigate('/');
+        }
+    }, [authState.token, navigate]);
+
     // useEffect(() => {
     //     //function to fetch transfer objects
     //     const fetchTransfers = async () => {
@@ -57,46 +64,6 @@ const HomePage = () => {
     const handleTabChange = (tabName) => {
         setActiveTab(tabName);
     };
-
-    // we can also set styling as a const in our components
-    // const headerStyle = {
-    //     textAlign: 'center',
-    //     marginTop: '2rem',
-    //     color: 'green'
-    // };
-
-    // const subHeaderStyle = {
-    //     textAlign: 'center',
-    //     marginTop: '2rem'
-    // };
-
-    // const containerStyle = {
-    //     width: '80%',
-    //     maxWidth: '1100px',
-    //     margin: '0 auto',
-    //     padding: '32px 0px',
-    // };
-
-    // const navListStyle = {
-    //     margin: '0',
-    //     padding: '0',
-    //     listStyle: 'none',
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    // };
-
-    // const navItemStyle = {
-    //     marginRight: '1em'
-    // };
-
-    // const buttonLinkStyle = {
-    //     background: 'none',
-    //     border: 'none',
-    //     color: activeTab ? 'green': 'black',
-    //     textDecoration: activeTab ? 'underline': 'none',
-    //     cursor: 'pointer',
-    //     fontSize: '26px',
-    // };
 
     return (
         <div className="home-container">

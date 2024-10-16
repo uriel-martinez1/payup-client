@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 const RequestUpdateStatusPage = () => {
     const location = useLocation();
