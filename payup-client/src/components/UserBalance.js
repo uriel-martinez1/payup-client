@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import AuthContext from "../store/AuthContext";
 import axios from "axios";
 
 // we need the url for the axios call
 const apiURL = process.env.REACT_APP_PAYUP_SERVER_BASEURL + '/api/account/balance';
 
 const UserBalance = () => {
+    const {authState} = useContext(AuthContext);
     const [balance, setBalance] = useState(null); // State to store balance
     const [error, setError] = useState(null); // State for error handling
 
@@ -13,7 +15,11 @@ const UserBalance = () => {
         // function to make the axios call to server
         const fetchBalance = async () => {
             try {
-                const response = await axios.get(apiURL);
+                const response = await axios.get(apiURL, {
+                    headers: {
+                        'Authorization': `Bearer ${authState.token}`
+                    }
+                });
                 setBalance(response.data.balance);
             } catch (err) {
                 setError('Error fetching balance.');
@@ -21,7 +27,7 @@ const UserBalance = () => {
         };
 
         fetchBalance();
-    }, []);
+    }, [authState.token]);
 
     //styling
     const containerStyle = {

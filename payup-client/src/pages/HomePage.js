@@ -98,7 +98,7 @@ const HomePage = () => {
                 activeTab === 'all' && (
                     <div>
                         {/**This is print error on screen */}
-                        {error && <p className="error-message">{error}</p>}
+                        {error && otherTransfers.length === 0 && <p className="error-message">{error}</p>}
                         {otherTransfers.length > 0 ? (
                             <TransferCards transfers={otherTransfers} />
                         ) : (
@@ -112,7 +112,7 @@ const HomePage = () => {
                 activeTab === 'requests' && (
                     <div>
                         {/**This is print error on screen */}
-                        {error && <p className="error-message">{error}</p>}
+                        {error && requests.length === 0 && <p className="error-message">{error}</p>}
                         {requests.length > 0 ? (
                             <TransferCards transfers={requests} />
                         ) : (
